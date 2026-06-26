@@ -1,4 +1,3 @@
-```python
 """Application settings loaded from environment variables and Streamlit Secrets."""
 
 from __future__ import annotations
