@@ -1,0 +1,48 @@
+```mermaid
+classDiagram
+    class ServiceContainer {
+        +auth: AuthService
+        +prompts: PromptService
+        +gemini: GeminiService
+        +evaluation: EvaluationService
+        +optimizer: OptimizerService
+        +comparison: ComparisonService
+        +analytics: AnalyticsService
+        +export: ExportService
+        +settings: SettingsService
+    }
+
+    class GeminiService {
+        -api_key: str
+        -default_model: str
+        +generate()
+        +generate_stream()
+        +generate_json()
+        +test_connection()
+    }
+
+    class AuthService {
+        +register()
+        +login()
+        +logout()
+    }
+
+    class PromptService {
+        +create()
+        +list_prompts()
+        +create_version()
+        +restore_version()
+    }
+
+    class EvaluationService {
+        +evaluate()
+    }
+
+    ServiceContainer --> AuthService
+    ServiceContainer --> PromptService
+    ServiceContainer --> GeminiService
+    ServiceContainer --> EvaluationService
+    EvaluationService --> GeminiService
+    OptimizerService --> GeminiService
+    ComparisonService --> GeminiService
+```

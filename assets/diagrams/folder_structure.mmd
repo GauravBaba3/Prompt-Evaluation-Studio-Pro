@@ -1,0 +1,29 @@
+```mermaid
+graph TD
+    ROOT[prompt-evaluation-studio-pro/]
+    ROOT --> APP[app.py]
+    ROOT --> FE[frontend/]
+    ROOT --> BE[backend/]
+    ROOT --> SVC[services/]
+    ROOT --> DB[database/]
+    ROOT --> MDL[models/]
+    ROOT --> PRM[prompts/]
+    ROOT --> CFG[config/]
+    ROOT --> UTL[utils/]
+    ROOT --> TST[tests/]
+    ROOT --> DOC[docs/]
+    ROOT --> AST[assets/]
+    ROOT --> SCR[scripts/]
+
+    FE --> FEP[pages/]
+    FE --> FEH[session.py, theme.py, components.py]
+    FE --> FEM[dashboard, playground, comparison, ...]
+
+    SVC --> SVCG[gemini_service.py]
+    SVC --> SVCA[auth_service.py]
+    SVC --> SVCP[prompt_service.py]
+    SVC --> SVCE[evaluation_service.py]
+
+    DB --> DBM[models.py]
+    DB --> DBC[connection.py]
+```

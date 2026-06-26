@@ -1,0 +1,24 @@
+```mermaid
+flowchart TD
+    A[User Opens App] --> B{Authenticated?}
+    B -->|No| C[Login / Signup]
+    C --> D[Create Account]
+    D --> E[Load Templates]
+    B -->|Yes| F[Dashboard]
+    E --> F
+    F --> G{Select Module}
+    G --> H[Playground]
+    G --> I[Comparison]
+    G --> J[Evaluation]
+    G --> K[Optimizer]
+    H --> L[Configure Prompt]
+    L --> M[Run via Gemini]
+    M --> N[Save Experiment]
+    N --> O[Evaluate Output]
+    O --> P[Optimize Prompt]
+    P --> H
+    I --> Q[Compare Results]
+    Q --> R[Export Report]
+    J --> S[View Scores]
+    K --> T[Apply to Playground]
+```

@@ -1,0 +1,62 @@
+```mermaid
+erDiagram
+    USERS ||--o{ PROMPTS : owns
+    USERS ||--o{ EXPERIMENTS : runs
+    USERS ||--o{ EVALUATIONS : creates
+    USERS ||--o{ ANALYTICS : generates
+    PROMPTS ||--o{ PROMPT_VERSIONS : has
+    PROMPTS ||--o{ EXPERIMENTS : links
+    EXPERIMENTS ||--o{ EVALUATIONS : scored_by
+
+    USERS {
+        int id PK
+        string username
+        string email
+        string password_hash
+        boolean is_admin
+        string theme
+    }
+
+    PROMPTS {
+        int id PK
+        int user_id FK
+        string title
+        text user_prompt
+        text system_prompt
+        string category
+        int current_version
+    }
+
+    PROMPT_VERSIONS {
+        int id PK
+        int prompt_id FK
+        int version_number
+        text user_prompt
+        text change_note
+    }
+
+    EXPERIMENTS {
+        int id PK
+        int user_id FK
+        int prompt_id FK
+        string status
+        string model_used
+        float execution_time_ms
+        boolean success
+    }
+
+    EVALUATIONS {
+        int id PK
+        int user_id FK
+        int experiment_id FK
+        float overall_score
+        text explanation
+    }
+
+    ANALYTICS {
+        int id PK
+        int user_id FK
+        string event_type
+        float execution_time_ms
+    }
+```

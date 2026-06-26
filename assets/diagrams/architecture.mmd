@@ -1,0 +1,31 @@
+```mermaid
+flowchart TB
+    subgraph Client
+        UI[Streamlit UI]
+    end
+
+    subgraph Application
+        SF[Service Factory]
+        AS[Auth Service]
+        PS[Prompt Service]
+        GS[Gemini Service]
+        ES[Evaluation Service]
+        OS[Optimizer Service]
+        CS[Comparison Service]
+        AN[Analytics Service]
+    end
+
+    subgraph Data
+        DB[(SQLite)]
+    end
+
+    subgraph External
+        GEMINI[Google Gemini API]
+    end
+
+    UI --> SF
+    SF --> AS & PS & GS & ES & OS & CS & AN
+    AS & PS & AN --> DB
+    GS & ES & OS & CS --> GEMINI
+    ES & OS --> DB
+```

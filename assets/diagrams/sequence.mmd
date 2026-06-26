@@ -1,0 +1,21 @@
+```mermaid
+sequenceDiagram
+    actor User
+    participant UI as Streamlit UI
+    participant SF as Service Factory
+    participant GS as Gemini Service
+    participant DB as SQLite
+    participant API as Gemini API
+
+    User->>UI: Enter prompt & click Run
+    UI->>SF: get_services()
+    SF->>GS: generate(system, user, config)
+    GS->>API: generate_content()
+    API-->>GS: Response text
+    GS-->>UI: PromptRunResponse
+    UI->>SF: experiments.create()
+    SF->>DB: INSERT experiment
+    UI->>SF: analytics.record_event()
+    SF->>DB: INSERT analytics
+    UI-->>User: Display response
+```
