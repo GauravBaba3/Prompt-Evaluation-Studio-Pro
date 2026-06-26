@@ -115,4 +115,3 @@ def get_settings() -> Settings:
     settings.ensure_directories()
 
     return settings
-```
